@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --surface: #ffffff;
+  --surface-muted: #f6f7f9;
+  --border: #e5e7eb;
+  --ink: #111827;
+  --ink-muted: #6b7280;
+  --sidebar: #111114;
+  --sidebar-ink: #d1d5db;
+  --sidebar-active: rgba(255, 255, 255, 0.08);
+}
+
+.dark {
+  --surface: #17171a;
+  --surface-muted: #1e1e22;
+  --border: #2b2b30;
+  --ink: #f3f4f6;
+  --ink-muted: #9ca3af;
+  --sidebar: #0b0b0d;
+  --sidebar-ink: #d1d5db;
+  --sidebar-active: rgba(255, 255, 255, 0.08);
+}
+
+/* Accent color modes */
+[data-color='amber']   { --accent: #f59e0b; --accent-fg: #ffffff; --accent-50: #fffbeb; --accent-100: #fef3c7; }
+[data-color='blue']    { --accent: #6d5efc; --accent-fg: #ffffff; --accent-50: #f1effe; --accent-100: #e3e0fd; }
+[data-color='pink']    { --accent: #ec4899; --accent-fg: #ffffff; --accent-50: #fdf2f8; --accent-100: #fce7f3; }
+[data-color='rose']    { --accent: #f43f5e; --accent-fg: #ffffff; --accent-50: #fff1f2; --accent-100: #ffe4e6; }
+[data-color='emerald'] { --accent: #10b981; --accent-fg: #ffffff; --accent-50: #ecfdf5; --accent-100: #d1fae5; }
+[data-color='black']   { --accent: #18181b; --accent-fg: #ffffff; --accent-50: #f4f4f5; --accent-100: #e4e4e7; }
+
+body {
+  background: var(--surface-muted);
+  color: var(--ink);
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 8px; }
