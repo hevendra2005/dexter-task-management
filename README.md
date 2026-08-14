@@ -6,6 +6,12 @@ A full-stack task & project management app built for the Full Stack Developer (F
 
 ---
 
+**Live app:** https://dexter-task-management.vercel.app
+**Live API:** https://dexter-backend-hr.onrender.com/api
+**Repo:** https://github.com/hevendra2005/dexter-task-management
+
+> Note: the backend is on Render's free tier, so it may take 30–60 seconds to wake up on the first request after a period of inactivity.
+
 ## 1. Project structure
 
 ```
