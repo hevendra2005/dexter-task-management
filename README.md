@@ -72,11 +72,16 @@ Without these env vars set, the "Login with Google" button will redirect to Goog
 
 ## 6. Known deviations from the Figma design
 
-- Pixel-perfect spacing/typography was approximated from the provided screenshots rather than an active Figma file (the shared link required Figma login on this environment); colors, layout proportions, and component structure were matched as closely as possible by eye.
+The Figma file itself was not directly accessible in the build environment (the shared link required a Figma login), so the UI was built from the seven screenshots provided rather than the live file. This means fidelity to the source is approximate, not pixel-perfect, and there is a visible gap between this implementation and the original Figma in areas like exact spacing, shadow/elevation, font weights, and some micro-interactions.
+
+Specific known gaps:
+- Overall layout structure, navigation, and core components (sidebar, tasks list/board, task drawer, settings panels) follow the Figma screenshots, but exact spacing units, font sizes, and shadow values were approximated rather than measured from the design file.
 - Drag-and-drop reordering between kanban columns is not implemented — status is changed via the priority-style dropdown / task detail drawer instead.
 - Filters (the funnel icon in the Tasks header) is present in the UI but not yet wired to actual filtering logic — only search and the Fields column-visibility toggle are functional.
 - "Labels", "Teams", and "Reporter" fields shown in some Figma dropdowns are not modeled in the database; only Status, Priority, Members, and Due Date are implemented end-to-end.
 - Real-time collaboration (e.g. the floating cursor/avatar seen in the Figma board view) is not implemented.
+
+Given more time (or direct Figma access), the next step would be to go screen-by-screen and tighten spacing/typography/color values against the actual design tokens rather than screenshots.
 
 ## 7. Part 2 — Product Understanding
 

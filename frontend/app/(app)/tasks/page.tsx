@@ -22,6 +22,7 @@ import {
 } from '@/lib/types';
 import PriorityMenu from '@/components/PriorityMenu';
 import MemberAvatar from '@/components/MemberAvatar';
+import TaskCard from '@/components/TaskCard';
 import AddTaskModal from '@/components/AddTaskModal';
 import TaskDrawer from '@/components/TaskDrawer';
 import clsx from 'clsx';
@@ -306,39 +307,37 @@ export default function TasksPage() {
             {STATUS_ORDER.map((status) => (
               <div key={status} className="w-72 shrink-0">
                 <div className="mb-2 flex items-center justify-between px-1">
-                  <span className="text-sm font-medium text-ink">
+                  <span className="flex items-center gap-1.5 text-sm font-medium text-ink">
+                    <span
+                      className={clsx(
+                        'h-2 w-2 rounded-full',
+                        status === 'todo' && 'bg-ink-muted',
+                        status === 'doing' && 'bg-amber-500',
+                        status === 'completed' && 'bg-emerald-500',
+                        status === 'on_hold' && 'bg-red-400',
+                      )}
+                    />
                     {STATUS_LABELS[status]}
                   </span>
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-ink-muted">
+                    <span className="rounded-full bg-surface-muted px-1.5 py-0.5 text-xs text-ink-muted">
                       {grouped[status].length}
                     </span>
-                    <button onClick={() => setModalStatus(status)}>
+                    <button
+                      onClick={() => setModalStatus(status)}
+                      className="rounded p-0.5 hover:bg-surface-muted"
+                    >
                       <Plus className="h-3.5 w-3.5 text-ink-muted" />
                     </button>
                   </div>
                 </div>
                 <div className="flex flex-col gap-2">
                   {grouped[status].map((task) => (
-                    <div
+                    <TaskCard
                       key={task.id}
+                      task={task}
                       onClick={() => setActiveTask(task)}
-                      className="cursor-pointer rounded-lg border border-border bg-surface p-3 shadow-sm hover:border-accent"
-                    >
-                      <p className="mb-2 text-sm text-ink">{task.title}</p>
-                      <div className="flex items-center justify-between">
-                        <div className="flex -space-x-1.5">
-                          {task.members?.slice(0, 3).map((m) => (
-                            <MemberAvatar key={m.id} user={m} size={18} />
-                          ))}
-                        </div>
-                        {task.dueDate && (
-                          <span className="rounded bg-surface-muted px-1.5 py-0.5 text-[10px] text-ink-muted">
-                            {task.dueDate.slice(5, 10)}
-                          </span>
-                        )}
-                      </div>
-                    </div>
+                    />
                   ))}
                   <button
                     onClick={() => setModalStatus(status)}
